@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import { Scale, Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="bg-gradient-to-br from-primary to-primary-glow text-primary-foreground">
-      <div className="container mx-auto px-4 py-12">
+  return <footer className="bg-gradient-to-br from-primary to-primary-glow text-primary-foreground">
+      <div className="container mx-auto px-4 py-12 bg-slate-800">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Logo e Descrição */}
           <div className="space-y-4">
@@ -26,34 +23,22 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Links Rápidos</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  to="/"
-                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
+                <Link to="/" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/sobre"
-                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
+                <Link to="/sobre" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Sobre
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/servicos"
-                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
+                <Link to="/servicos" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Serviços
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/contato"
-                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
+                <Link to="/contato" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Contato
                 </Link>
               </li>
@@ -89,16 +74,10 @@ const Footer = () => {
               </li>
             </ul>
             <div className="flex gap-3 mt-4">
-              <a
-                href="#"
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110"
-              >
+              <a href="#" className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a
-                href="#"
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110"
-              >
+              <a href="#" className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
@@ -112,24 +91,16 @@ const Footer = () => {
               © {currentYear} AJ Judicial. Todos os direitos reservados.
             </p>
             <div className="flex gap-6">
-              <Link
-                to="/privacidade"
-                className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
-              >
+              <Link to="/privacidade" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
                 Política de Privacidade
               </Link>
-              <Link
-                to="/termos"
-                className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
-              >
+              <Link to="/termos" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
                 Termos de Uso
               </Link>
             </div>
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

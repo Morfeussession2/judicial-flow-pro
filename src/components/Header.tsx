@@ -25,11 +25,14 @@ const Header = () => {
   }, {
     name: "Contato",
     path: "/contato"
+  }, {
+    name: "Relatórios",
+    path: "/relatorios"
   }];
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "backdrop-blur-lg bg-background/95 border-b border-border shadow-elegant" : "bg-background/80 backdrop-blur-md"}`}>
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="p-6 mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
+        <Link to="/" className="flex items-center gap-6 group">
           <Scale className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold text-foreground">
             Administradora Judicial
@@ -37,8 +40,8 @@ const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map(link => <Link key={link.path} to={link.path} className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === link.path ? "text-primary" : "text-foreground"}`}>
+        <nav className="hidden md:flex items-center gap-10">
+          {navLinks.map(link => <Link key={link.path} to={link.path} className={`text-lg font-medium transition-colors hover:text-primary ${location.pathname === link.path ? "text-primary" : "text-foreground"}`}>
               {link.name}
             </Link>)}
         </nav>

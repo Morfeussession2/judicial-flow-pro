@@ -133,7 +133,7 @@ const Index = () => {
       <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-primary bg-clip-text text-transparent">
               Funcionalidades Completas
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -148,12 +148,14 @@ const Index = () => {
                 className="glass-card hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-fade-in-up border-primary/10"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <CardContent className="p-8">
-                  <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary-glow rounded-2xl flex items-center justify-center mb-6 shadow-elegant">
+                <CardContent className="p-4 flex items-center justify-center gap-4">
+                  <div className="p-4 w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-elegant">
                     <feature.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                    <p className="text-muted-foreground">{feature.description}</p>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -165,7 +167,7 @@ const Index = () => {
       <section className="py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-secondary bg-clip-text text-transparent">
               Por Que Escolher a AJ Judicial?
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -206,7 +208,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-primary to-primary-glow text-primary-foreground">
+      <section className="py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-8 animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold">

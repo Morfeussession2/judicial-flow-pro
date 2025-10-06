@@ -188,7 +188,7 @@ const Auth = () => {
                 </div>
                 <Button
                   type="submit"
-                  variant="hero"
+                  variant="default"
                   size="lg"
                   className="w-full"
                   disabled={isLoading}

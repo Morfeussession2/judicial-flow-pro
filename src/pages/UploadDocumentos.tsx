@@ -145,7 +145,7 @@ const UploadDocumentos = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-1 container mx-auto px-4 py-12">
+      <main className="flex-1 container mx-auto px-4 py-20">
         <div className="max-w-3xl mx-auto">
           <div className="mb-8 animate-fade-in-up">
             <h1 className="text-4xl font-bold mb-4">Upload de Documentos</h1>
@@ -237,7 +237,7 @@ const UploadDocumentos = () => {
                 <div className="flex gap-4">
                   <Button
                     type="submit"
-                    variant="hero"
+                    variant="default"
                     size="lg"
                     className="flex-1"
                     disabled={isUploading}

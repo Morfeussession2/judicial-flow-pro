@@ -16,7 +16,7 @@ const Footer = () => {
               </div>
               <span className="text-xl font-bold">AJ Judicial</span>
             </div>
-            <p className="text-sm text-primary-foreground/80">
+            <p className="text-sm text-primary-foreground/">
               Gestão profissional e transparente de processos de recuperação judicial e falência.
             </p>
           </div>
@@ -28,7 +28,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-sm text-primary-foreground/ hover:text-primary-foreground transition-colors"
                 >
                   Home
                 </Link>
@@ -36,7 +36,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/sobre"
-                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-sm text-primary-foreground/ hover:text-primary-foreground transition-colors"
                 >
                   Sobre
                 </Link>
@@ -44,7 +44,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/servicos"
-                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-sm text-primary-foreground/ hover:text-primary-foreground transition-colors"
                 >
                   Serviços
                 </Link>
@@ -52,7 +52,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/contato"
-                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-sm text-primary-foreground/ hover:text-primary-foreground transition-colors"
                 >
                   Contato
                 </Link>
@@ -64,10 +64,10 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Serviços</h3>
             <ul className="space-y-2">
-              <li className="text-sm text-primary-foreground/80">Recuperação Judicial</li>
-              <li className="text-sm text-primary-foreground/80">Falência</li>
-              <li className="text-sm text-primary-foreground/80">Gestão de Credores</li>
-              <li className="text-sm text-primary-foreground/80">Assembleias Virtuais</li>
+              <li className="text-sm text-primary-foreground/">Recuperação Judicial</li>
+              <li className="text-sm text-primary-foreground/">Falência</li>
+              <li className="text-sm text-primary-foreground/">Gestão de Credores</li>
+              <li className="text-sm text-primary-foreground/">Assembleias Virtuais</li>
             </ul>
           </div>
 
@@ -75,15 +75,15 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Contato</h3>
             <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
+              <li className="flex items-center gap-2 text-sm text-primary-foreground/">
                 <Phone className="w-4 h-4" />
                 <span>(11) 1234-5678</span>
               </li>
-              <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
+              <li className="flex items-center gap-2 text-sm text-primary-foreground/">
                 <Mail className="w-4 h-4" />
                 <span>contato@ajjudicial.com.br</span>
               </li>
-              <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
+              <li className="flex items-center gap-2 text-sm text-primary-foreground/">
                 <MapPin className="w-4 h-4" />
                 <span>São Paulo, SP</span>
               </li>

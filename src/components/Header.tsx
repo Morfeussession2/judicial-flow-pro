@@ -48,7 +48,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden md:contents items-center gap-10">
           {navLinks.map(link => <Link key={link.path} to={link.path} className={`text-lg font-medium transition-colors hover:text-primary ${location.pathname === link.path ? "text-primary" : "text-foreground"}`}>
               {link.name}
             </Link>)}

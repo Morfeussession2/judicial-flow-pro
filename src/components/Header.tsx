@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Scale } from "lucide-react";
+import { Menu, X, Scale, LogOut } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -13,6 +16,11 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate('/');
+  };
   const navLinks = [{
     name: "Home",
     path: "/"
@@ -46,12 +54,23 @@ const Header = () => {
             </Link>)}
         </nav>
 
-        {/* Desktop Login Button */}
-        <div className="hidden md:block">
-          <Button asChild variant="default">
-            <Link to="/auth">Área Restrita</Link>
-          </Button>
-        </div>
+        {/* Desktop Logout Button */}
+        {location.pathname === '/upload-documentos' ? (
+          <div className="hidden md:block">
+            <Button variant="ghost" onClick={handleLogout}>
+              <LogOut className="w-4 h-4 mr-2" />
+              Sair
+            </Button>
+          </div>
+          ) : (
+          <div className="hidden md:block">
+            <Button asChild variant="default" className="w-full">
+              <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
+                Área Restrita
+              </Link>
+            </Button>
+          </div>
+        )}
 
         {/* Mobile Menu Button */}
         <button className="md:hidden text-foreground" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle menu">
@@ -65,11 +84,21 @@ const Header = () => {
             {navLinks.map(link => <Link key={link.path} to={link.path} className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === link.path ? "text-primary" : "text-foreground"}`} onClick={() => setIsMobileMenuOpen(false)}>
                 {link.name}
               </Link>)}
-            <Button asChild variant="default" className="w-full">
-              <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                Área Restrita
-              </Link>
-            </Button>
+            {location.pathname === '/upload-documentos' ? (
+              <Button variant="ghost" className="w-full" onClick={() => {
+                handleLogout();
+                setIsMobileMenuOpen(false);
+              }}>
+                <LogOut className="w-4 h-4 mr-2" />
+                  Sair
+                </Button>
+              ) : (
+                <Button asChild variant="default" className="w-full">
+                  <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
+                    Área Restrita
+                  </Link>
+                </Button>
+            )}
           </nav>
         </div>}
     </header>;

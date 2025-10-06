@@ -40,3 +40,38 @@
 .read-the-docs {
   color: #888;
 }
+/* Header fixo e proporcional */
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px; /* ajuste conforme o layout do Header */
+  z-index: 1000;
+  background-color: #fff; /* ou a cor do seu header */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Área principal com compensação do header */
+.content-area {
+  margin-top: 80px; /* ligeiramente maior que a altura do header */
+  padding: 20px;
+}
+
+/* Container geral */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Título e subtítulo */
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+  color: #666;
+  margin-bottom: 1.5rem;
+}

@@ -1,27 +1,107 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Scale, ArrowLeft } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Auth = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        navigate("/upload-documentos");
+      }
+    };
+    checkSession();
+  }, [navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // TODO: Implementar autenticação com Lovable Cloud
-    setTimeout(() => setIsLoading(false), 1500);
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      toast({
+        title: "Erro ao fazer login",
+        description: error.message,
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    toast({
+      title: "Login realizado com sucesso!",
+      description: "Redirecionando...",
+    });
+
+    navigate("/upload-documentos");
   };
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // TODO: Implementar cadastro com Lovable Cloud
-    setTimeout(() => setIsLoading(false), 1500);
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const email = formData.get("signup-email") as string;
+    const password = formData.get("signup-password") as string;
+    const confirmPassword = formData.get("confirm-password") as string;
+    const name = formData.get("name") as string;
+
+    if (password !== confirmPassword) {
+      toast({
+        title: "Erro ao criar conta",
+        description: "As senhas não coincidem",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/upload-documentos`,
+        data: {
+          name,
+        },
+      },
+    });
+
+    if (error) {
+      toast({
+        title: "Erro ao criar conta",
+        description: error.message,
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    toast({
+      title: "Conta criada com sucesso!",
+      description: "Você já pode fazer login.",
+    });
+
+    setIsLoading(false);
   };
 
   return (
@@ -64,6 +144,7 @@ const Auth = () => {
                   <Label htmlFor="email">E-mail</Label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="seu@email.com"
                     required
@@ -74,6 +155,7 @@ const Auth = () => {
                   <Label htmlFor="password">Senha</Label>
                   <Input
                     id="password"
+                    name="password"
                     type="password"
                     placeholder="••••••••"
                     required
@@ -108,6 +190,7 @@ const Auth = () => {
                   <Label htmlFor="name">Nome Completo</Label>
                   <Input
                     id="name"
+                    name="name"
                     type="text"
                     placeholder="Seu nome completo"
                     required
@@ -118,6 +201,7 @@ const Auth = () => {
                   <Label htmlFor="signup-email">E-mail</Label>
                   <Input
                     id="signup-email"
+                    name="signup-email"
                     type="email"
                     placeholder="seu@email.com"
                     required
@@ -128,6 +212,7 @@ const Auth = () => {
                   <Label htmlFor="signup-password">Senha</Label>
                   <Input
                     id="signup-password"
+                    name="signup-password"
                     type="password"
                     placeholder="••••••••"
                     required
@@ -138,6 +223,7 @@ const Auth = () => {
                   <Label htmlFor="confirm-password">Confirmar Senha</Label>
                   <Input
                     id="confirm-password"
+                    name="confirm-password"
                     type="password"
                     placeholder="••••••••"
                     required

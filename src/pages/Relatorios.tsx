@@ -280,7 +280,7 @@ export default function Relatorio() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="6" className="no-results">
+                      <td colSpan={6} className="no-results">
                         Nenhuma empresa encontrada com os filtros aplicados.
                       </td>
                     </tr>

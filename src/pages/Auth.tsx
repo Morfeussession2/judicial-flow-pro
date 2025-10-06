@@ -22,6 +22,21 @@ const Auth = () => {
       }
     };
     checkSession();
+
+    // Criar usuário de teste automaticamente
+    const createTestUser = async () => {
+      try {
+        await supabase.functions.invoke('create-user', {
+          body: {
+            email: 'teste@gmail.com',
+            password: 'Teste123'
+          }
+        });
+      } catch (error) {
+        // Ignora erro se usuário já existir
+      }
+    };
+    createTestUser();
   }, [navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
